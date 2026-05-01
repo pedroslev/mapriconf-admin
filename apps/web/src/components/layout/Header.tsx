@@ -54,7 +54,7 @@ export function Header({ title }: { title?: string }) {
   const count = unread?.count ?? 0
 
   return (
-    <header className="h-14 bg-white border-b border-gray-200 flex items-center justify-between px-6 sticky top-0 z-20">
+    <header className="h-14 bg-white border-b border-gray-200 flex items-center justify-between px-4 md:px-6 sticky top-0 z-20">
       <h2 className="text-base font-semibold text-gray-800">{title ?? 'Mapriconf Admin'}</h2>
 
       <div className="flex items-center gap-3">

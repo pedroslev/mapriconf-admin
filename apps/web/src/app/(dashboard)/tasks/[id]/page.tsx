@@ -111,9 +111,9 @@ export default function TaskDetailPage() {
   const nextStatuses = NEXT_STATUSES[task.status] ?? []
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
+    <div className="p-4 md:p-6 max-w-5xl mx-auto">
       {/* Header */}
-      <div className="flex items-start justify-between mb-6">
+      <div className="flex items-start justify-between mb-6 gap-2 flex-wrap">
         <div className="flex items-center gap-3">
           <button onClick={() => router.back()} className="text-gray-400 hover:text-gray-600 text-sm">← Volver</button>
           <span className="text-gray-300">|</span>
@@ -134,9 +134,9 @@ export default function TaskDetailPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Main content */}
-        <div className="col-span-2 space-y-5">
+        <div className="col-span-1 md:col-span-2 space-y-5">
           <div>
             <h1 className="text-2xl font-bold text-gray-900 mb-3">{task.title}</h1>
             <div className="flex items-center gap-2 flex-wrap">
