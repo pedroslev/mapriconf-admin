@@ -26,4 +26,4 @@ RUN mkdir -p /app/uploads
 
 EXPOSE 3001
 
-CMD ["sh", "-c", "npx prisma migrate deploy && node dist/server.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node_modules/.bin/tsx prisma/seed.ts && node dist/server.js"]
