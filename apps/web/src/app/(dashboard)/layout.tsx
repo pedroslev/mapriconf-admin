@@ -7,16 +7,17 @@ import { Header } from '@/components/layout/Header'
 import { MobileNav } from '@/components/layout/MobileNav'
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const { user, accessToken } = useAuth()
+  const { user, accessToken, _hasHydrated } = useAuth()
   const router = useRouter()
 
   useEffect(() => {
+    if (!_hasHydrated) return
     if (!user || !accessToken) {
       router.push('/login')
     }
-  }, [user, accessToken, router])
+  }, [_hasHydrated, user, accessToken, router])
 
-  if (!user) {
+  if (!_hasHydrated || !user) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <p className="text-gray-500">Cargando...</p>

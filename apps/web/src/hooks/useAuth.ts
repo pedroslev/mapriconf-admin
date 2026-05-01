@@ -8,6 +8,8 @@ interface AuthStore {
   user: User | null
   accessToken: string | null
   refreshToken: string | null
+  _hasHydrated: boolean
+  setHasHydrated: (v: boolean) => void
   login: (email: string, password: string) => Promise<void>
   logout: () => Promise<void>
   setTokens: (access: string, refresh: string, user: User) => void
@@ -19,6 +21,8 @@ export const useAuth = create<AuthStore>()(
       user: null,
       accessToken: null,
       refreshToken: null,
+      _hasHydrated: false,
+      setHasHydrated: (v) => set({ _hasHydrated: v }),
 
       setTokens: (accessToken, refreshToken, user) => {
         localStorage.setItem('accessToken', accessToken)
@@ -46,6 +50,12 @@ export const useAuth = create<AuthStore>()(
         }
       },
     }),
-    { name: 'mapriconf-auth', partialize: (s) => ({ user: s.user, accessToken: s.accessToken, refreshToken: s.refreshToken }) },
+    {
+      name: 'mapriconf-auth',
+      partialize: (s) => ({ user: s.user, accessToken: s.accessToken, refreshToken: s.refreshToken }),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true)
+      },
+    },
   ),
 )
