@@ -12,6 +12,7 @@ import { tasksRoutes } from './modules/tasks/tasks.routes.js'
 import { commentsRoutes } from './modules/comments/comments.routes.js'
 import { reportsRoutes } from './modules/reports/reports.routes.js'
 import { notificationsRoutes } from './modules/notifications/notifications.routes.js'
+import { attachmentsRoutes } from './modules/attachments/attachments.routes.js'
 
 declare module 'fastify' {
   interface FastifyInstance {
@@ -62,6 +63,7 @@ export async function buildApp() {
   await app.register(commentsRoutes, { prefix: '/api' })
   await app.register(reportsRoutes, { prefix: '/api/reports' })
   await app.register(notificationsRoutes, { prefix: '/api/notifications' })
+  await app.register(attachmentsRoutes, { prefix: '/api' })
 
   app.setErrorHandler((error: { validation?: unknown; statusCode?: number; message?: string }, _request, reply) => {
     app.log.error(error)

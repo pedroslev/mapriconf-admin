@@ -107,7 +107,7 @@ export default function ReportsPage() {
 
       <div className="flex justify-end">
         <a
-          href="http://localhost:3001/api/reports/export"
+          href={`${process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001'}/api/reports/export`}
           target="_blank"
           className="text-sm text-blue-600 hover:underline"
         >
