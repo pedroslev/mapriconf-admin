@@ -46,6 +46,6 @@ export const useAuth = create<AuthStore>()(
         }
       },
     }),
-    { name: 'mapriconf-auth', partialize: (s) => ({ user: s.user, refreshToken: s.refreshToken }) },
+    { name: 'mapriconf-auth', partialize: (s) => ({ user: s.user, accessToken: s.accessToken, refreshToken: s.refreshToken }) },
   ),
 )
